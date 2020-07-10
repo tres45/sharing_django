@@ -1,0 +1,40 @@
+{% load chogori_tag %}
+
+<div class="search-bar w3layouts-newsletter">
+    <h3 class="sear-head editContent" >Поиск похода</h3>
+    <form action="{% url 'search_filter' %}" method="get" class="d-flex editContent" name="search_filter">
+        <input type="search" placeholder="Введите название..." name="search" class="form-control" required="" id="search_input">
+        <button type="submit" class="btn1 btn">
+            <span class="fa fa-search" aria-hidden="true" ></span>
+        </button>
+    </form>
+</div>
+
+<form action="{% url 'json_filter' %}" method="get" name="filter">
+    <div class="left-side my-4">
+        <h3 class="sear-head editContent" >Категория</h3>
+        <ul class="w3layouts-box-list">
+            {% for category in view.get_categories %}
+                <li class="editContent" >
+                    <input type="checkbox" class="checked" name="category" value="{{ category.id }}">
+                    <span class="span editContent" >{{ category.name }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="left-side">
+        <h3 class="sear-head editContent" >Регион</h3>
+        <ul class="w3layouts-box-list">
+            {% for data in view.get_regions %}
+                <li class="editContent" >
+                    <input type="checkbox" class="checked" name="region" value="{{ data.region }}">
+                    <span class="span editContent" >{{ data.region }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <button type="submit">Поиск</button>
+</form>
+
+{% get_new_hikes count=5 %}

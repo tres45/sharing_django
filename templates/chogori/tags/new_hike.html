@@ -1,0 +1,15 @@
+<div class="deal-leftmk left-side new_hikes">
+    <h3 class="sear-head editContent">Новые походы</h3>
+    {% for hike in new_hikes %}
+        <div class="special-sec1 row mt-3 editContent">
+            <div class="img-deals col-md-4">
+                <img src="{{ hike.image.url }}" class="img-fluid" alt="">
+            </div>
+            <div class="img-deal1 col-md-4">
+                <a href="{{ hike.get_absolute_url }}" class="editContent">
+                    <h3 class="editContent">{{ hike.title }}</h3>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>

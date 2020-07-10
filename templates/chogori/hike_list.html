@@ -1,0 +1,37 @@
+{% extends 'chogori/base.html' %}
+{% load static %}
+
+{% block title %} Chogori {% endblock title %}      
+{% block hike %}
+    {% block sidebar %}
+        <div class="side-bar col-lg-3">      
+            {% include 'include/sidebar.html' %}
+        </div>
+    {% endblock sidebar %}
+    <div class="left-ads-display col-lg-9">
+        <div class="row">
+            {% for hike in hike_list %}
+                <div class="col-md-4 product-men">
+                    <div class="product-shoe-info editContent text-center mt-lg-4" >
+                        <div class="men-thumb-item">
+                            <img src="{{ hike.image.url }}" class="img-fluid" alt="" >
+                        </div>
+                        <div class="item-info-product">
+                            <h4>
+                                <a href="{{ hike.get_absolute_url }}" class="editContent">
+                                    {{ hike.title }}
+                                </a>
+                            </h4>
+
+                            <div class="product_price">
+                                {{ hike.tagline }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="http://twitter.github.com/hogan.js/builds/3.0.1/hogan-3.0.1.js"></script>
+{% endblock hike %}
